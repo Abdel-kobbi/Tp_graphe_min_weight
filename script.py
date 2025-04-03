@@ -18,10 +18,8 @@ def generer_matrice(length):
                 matrice[j][i] = value
     return matrice
 
-matrice = generer_matrice(4)
+#matrice = generer_matrice(4)
 
-for line in matrice:
-    print(line)
 
 # function to save matrix in txt file
 def save_matrice(matrice, path):
@@ -32,4 +30,18 @@ def save_matrice(matrice, path):
                 file.write(str(item) + "\t")
             file.write("\n")
 
-save_matrice(matrice, r"matrix.txt")
+#save_matrice(matrice, r"matrix.txt")
+
+# function to read matrix from TXT file
+def read_matrice(path):
+    matrice = []
+    with open(path, "r") as file:
+        length = int(file.readline().strip("\n"))
+        for line in file:
+            matrice.append(list(map(int, filter(lambda x: x.isdigit(), line.split("\t")))))
+    return matrice
+
+matrice = read_matrice(r"matrix.txt")
+
+for line in matrice:
+    print(line)
