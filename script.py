@@ -1,5 +1,7 @@
 from random import randint
 
+
+#function for generate matrix 
 def generer_matrice(length):
     matrice = []
     for i in range(length):
@@ -20,3 +22,14 @@ matrice = generer_matrice(4)
 
 for line in matrice:
     print(line)
+
+# function to save matrix in txt file
+def save_matrice(matrice, path):
+    with open(path, "w") as file:
+        file.write(str(len(matrice)) + "\n")
+        for line in matrice:
+            for item in line:
+                file.write(str(item) + "\t")
+            file.write("\n")
+
+save_matrice(matrice, r"matrix.txt")
